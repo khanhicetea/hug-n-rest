@@ -1,7 +1,7 @@
 import hug
 import os
 from config import config
-from lib.db import Db
+from libs.db import Db
 
 
 class Config(dict):
@@ -20,22 +20,24 @@ class HugAndRest():
         self.extensions = dict()
         self.config = config
 
+    def init_app(self):
+        self.extensions['db'] = Db(app=self)
+
+        @hug.extend_api()
+        def register_blueprint():
+            from . import api
+
+            return [api]
+
 
 def create_app(app_env):
     app_config = Config()
-    app_config.from_object(config[env])
+    app_config.from_object(config[app_env])
     app = HugAndRest(app_config)
-    app.extensions['db'] = Db(app=app)
 
     return app
 
 
 env = os.getenv('APP_ENV', 'development')
 current_app = create_app(env)
-
-
-@hug.extend_api()
-def register_blueprint():
-    from . import api
-
-    return [api]
+current_app.init_app()
