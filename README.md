@@ -4,13 +4,25 @@
 
 ## Introduction
 
-`Hug-n-Rest` is a micro framework for RESTful API.
+`Hug-n-Rest` is a micro framework for RESTful API based on [Hug](https://github.com/timothycrosley/hug).
 
 ## Usage
 
 ```shell
-$ virtualenv venv
+$ virtualenv -p python3 venv
 $ source venv/bin/active
 $ python manage.py db upgrade head
 $ hug -f app/__init__.py
+```
+
+## Demo
+
+```shell
+http POST :8000/api/v1/groups name=Group1 alias=g1 max_members=123
+http POST :8000/api/v1/groups name=Group2 alias=g2
+http :8000/api/v1/groups
+
+http POST :8000/api/v1/users name="Khanh Ice Tea" fullname="Khanh Nguyen" email="khanhicetea@gmail.com" password="123456" group_id=2
+http POST :8000/api/v1/users name="Chuck Norris" fullname="Chuck norris" email="chuck_norris@gmail.com" password="nobody" group_id=1
+http :8000/api/v1/users
 ```
