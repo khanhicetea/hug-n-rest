@@ -1,5 +1,5 @@
 import hug
-from falcon import HTTP_UNAUTHORIZED
+from falcon import HTTPBadRequest
 from marshmallow import fields
 from app.services import UserService
 from app.directives import token_generate, token_required
@@ -10,7 +10,7 @@ def auth_login(email: fields.Email(), password: fields.String()):
     user = UserService.instance().login(email, password)
 
     if not user:
-        raise HTTP_UNAUTHORIZED
+        raise HTTPBadRequest("login", "failed")
 
     token_data = dict(id=user.id)
     return {"token": token_generate(token_data)}
