@@ -13,7 +13,7 @@ $ virtualenv -p python3 venv
 $ source venv/bin/active
 $ pip install -r requirements.txt
 $ python manage.py db upgrade head
-$ hug -f app/__init__.py
+$ gunicorn --reload app:__hug_wsgi__
 ```
 
 ## Demo

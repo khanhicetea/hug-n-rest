@@ -32,6 +32,10 @@ class Base(db.Base):
         db.session.commit()
 
     @classmethod
+    def query(cls):
+        return db.session.query(cls)
+
+    @classmethod
     def dumps(cls, lists):
         schema = cls.__schema__(many=True)
         return schema.dump(lists).data
