@@ -18,5 +18,4 @@ def auth_login(email: fields.Email(), password: fields.String()):
 
 @hug.get('/me', requires=token_required)
 def who_am_i(user: hug.directives.user):
-    user = UserService.instance().get_one(user['id'])
     return user.dump()

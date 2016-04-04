@@ -1,11 +1,13 @@
 import jwt
 from app import current_app
+from app.services import UserService
 
 
 def token_verify(token):
     secret_key = current_app.config.get('SECRET_KEY')
     try:
-        return jwt.decode(token, secret_key, algorithm='HS256')
+        data = jwt.decode(token, secret_key, algorithm='HS256')
+        return UserService.instance().get_one_or_fail(data['id'])
     except jwt.DecodeError:
         return False
 
