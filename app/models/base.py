@@ -1,8 +1,5 @@
-from app import current_app
+from . import db
 from marshmallow import Schema
-
-
-db = current_app.extensions['db']
 
 
 class Base(db.Base):
