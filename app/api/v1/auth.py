@@ -2,7 +2,7 @@ import hug
 from falcon import HTTPBadRequest
 from marshmallow import fields
 from app.services import UserService
-from app.directives import token_generate, token_required
+from app.decorators import token_generate, token_required
 
 
 @hug.post('/auth/login')
