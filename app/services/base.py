@@ -1,4 +1,4 @@
-from falcon import HTTPNotFound
+from app.exceptions import ModelNotFound
 
 
 class BaseService(object):
@@ -28,7 +28,7 @@ class BaseService(object):
     def get_one_or_fail(self, id, dump=False):
         result = self.model.query().get(id)
         if not result:
-            raise HTTPNotFound()
+            raise ModelNotFound(model_name=self.model.__name__)
         return result.dump() if dump else result
 
     def create_one(self, **data):
