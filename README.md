@@ -6,7 +6,7 @@
 
 `Hug-n-Rest` is a micro framework for RESTful API based on [Hug](https://github.com/timothycrosley/hug).
 
-## Usage
+## Usage ( python3 required )
 
 ```shell
 $ virtualenv -p python3 venv
@@ -16,7 +16,7 @@ $ python manage.py db upgrade head
 $ gunicorn --reload app:__hug_wsgi__
 ```
 
-## Demo
+## Demo : using HTTPie
 
 ```shell
 http POST :8000/api/v1/groups name=Group1 alias=g1 max_members=123
