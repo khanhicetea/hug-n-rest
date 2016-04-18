@@ -1,5 +1,5 @@
 from app.services.base import BaseService
-from app.models import Group
+from app.models.group import Group
 
 
 class GroupService(BaseService):

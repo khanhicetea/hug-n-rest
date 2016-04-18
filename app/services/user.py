@@ -1,5 +1,5 @@
 from app.services.base import BaseService
-from app.models import User
+from app.models.user import User
 
 
 class UserService(BaseService):
@@ -9,4 +9,3 @@ class UserService(BaseService):
         result = self.model.query().filter_by(email=email).first()
 
         return result if result and result.password == password else False
-

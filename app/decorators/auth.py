@@ -1,6 +1,6 @@
 import jwt
 from app import current_app
-from app.services import UserService
+from app.services.user import UserService
 
 
 def token_verify(token):

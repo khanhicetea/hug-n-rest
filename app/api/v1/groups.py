@@ -1,7 +1,7 @@
 import hug
 from falcon import HTTP_201
-from app.services import GroupService
-from app.schemas import GroupSchema
+from app.services.group import GroupService
+from app.schemas.group import GroupSchema
 
 
 @hug.get('/groups')

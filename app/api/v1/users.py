@@ -1,7 +1,7 @@
 import hug
 from falcon import HTTP_201
-from app.services import UserService
-from app.schemas import UserSchema
+from app.services.user import UserService
+from app.schemas.user import UserSchema
 
 
 @hug.get('/users')
