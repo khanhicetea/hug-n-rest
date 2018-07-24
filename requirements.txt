@@ -1,6 +1,6 @@
 alembic==0.8.5
 falcon==0.3.0
-gunicorn==19.4.5
+gunicorn==19.5.0
 hug==2.0.6
 Mako==1.0.4
 MarkupSafe==0.23
